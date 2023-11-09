@@ -1,0 +1,19 @@
+<mvc:View controllerName="ns.project1.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:sf="sap.ui.comp.smartform"
+    >
+    <Page id="page" title="{i18n>title}">
+      <content> 
+      <!-- <VBox id="Vbox1">
+      <Button id="btn1"  text="show toast" icon="sap-icon://account" press="handleEventPress" type="Emphasized"/>
+      <Button id="btn2" text="show box" press="handleEventBoxPress" type="Accept"></Button>
+      </VBox>
+      <sf:SmartForm id="sf1"></sf:SmartForm> -->
+
+  <List id="lista1" items="{NWProducts>/products}">
+  <StandardListItem type="Active" id="sli1" title="{NWProducts>ProductName}"/>
+  </List>
+       </content>
+    </Page>
+</mvc:View>
