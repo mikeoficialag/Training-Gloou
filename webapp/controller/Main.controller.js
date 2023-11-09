@@ -40,7 +40,7 @@ sap.ui.define([
          _getProducts: function(){
           let oProducts = this.getView().getModel("NWProducts");
           let sPath= "/Products";
-        
+          oProducts.setProperty("/isBusy",true)//esto se utiliza para saber si se encuentra ocupado
           this.oModel.read(sPath, {
           
             success: function(OData){
@@ -48,11 +48,13 @@ sap.ui.define([
               
                 console.log(OData)
                 oProducts.setProperty("/products",OData.results)
+                oProducts.setProperty("/isBusy",false)
             },
             error: function(err){
                
                 console.error( err)
             }
+         
           })
             },
             onBeforeRendering: function(){

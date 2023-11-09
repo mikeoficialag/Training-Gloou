@@ -12,7 +12,7 @@
       <sf:SmartForm id="sf1"></sf:SmartForm> -->
 
   <List id="lista1" items="{NWProducts>/products}">
-  <StandardListItem type="Active" id="sli1" title="{NWProducts>ProductName}"/>
+  <StandardListItem type="Active" busy="{NWProducts>/isBusy}" id="sli1" title="{NWProducts>ProductName}"/>
   </List>
        </content>
     </Page>
