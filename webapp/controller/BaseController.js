@@ -5,7 +5,7 @@ sap.ui.define([
 ], function(Controller, UIComponent, History) {
 	"use strict";
 
-	return Controller.extend("project1.controller.BaseController", {
+	return Controller.extend("ns.project1.controller.BaseController", {
 
 		 user:{
 			activo:false,

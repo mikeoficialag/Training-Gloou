@@ -9,7 +9,7 @@ sap.ui.define([
   function (BaseController,MessageToast) {
     "use strict";
 
-    return BaseController.extend("ns.nike.controller.Main", {
+    return BaseController.extend("ns.project1.controller.Main", {
       onInit: function () {
 
         var oModel = new sap.ui.model.json.JSONModel({

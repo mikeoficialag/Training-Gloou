@@ -1,24 +1,18 @@
 
-let aux=10
-sap.ui.define([
 
-    "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast",
-    "sap/m/MessageBox",
+sap.ui.define([
+    "./BaseController",
     "sap/ui/model/json/JSONModel"
 ],
-    /**
-     * @param {typeof sap.ui.core.mvc.Controller} Controller
-     */
-
-    function (Controller,MessageToast,MessageBox,JSONModel) {
+   
+    function (BaseController,JSONModel) {
         "use strict";
 
-        return Controller.extend("ns.project1.controller.Main", {
+        return BaseController.extend("ns.project1.controller.Lista", {
             oModel: null,
 
             onInit: function () {  
-               // this.isUserActive()
+                this.isUserActive()
                 this._setModels(); 
                 this._getProducts();
                
