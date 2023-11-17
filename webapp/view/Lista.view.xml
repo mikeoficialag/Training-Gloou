@@ -1,0 +1,31 @@
+<mvc:View controllerName="ns.project1.controller.Lista"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:sf="sap.ui.comp.smartform"
+    >
+    <Page id="page" title="{i18n>title}">
+      <content> 
+      <!-- <VBox id="Vbox1">
+      <Button id="btn1"  text="show toast" icon="sap-icon://account" press="handleEventPress" type="Emphasized"/>
+      <Button id="btn2" text="show box" press="handleEventBoxPress" type="Accept"></Button>
+      </VBox>
+      <sf:SmartForm id="sf1"></sf:SmartForm> -->
+ 
+ <Panel id="pan1"
+    headerText="{i18n>listaPTitle}">
+<FlexBox id="fxl" justifyContent="End" >
+ <VBox id="vb">
+
+    <Button id="btn1" icon="sap-icon://log" text="Log-out" press="onPressLogOut"/>
+    </VBox>
+  </FlexBox>
+  </Panel>
+
+  <Panel id="panel2">
+ <List id="lista1" items="{NWProducts>/products}">
+  <StandardListItem type="Active" busy="{NWProducts>/isBusy}" id="sli1" title="{NWProducts>ProductName}"/>
+  </List>
+  </Panel>
+       </content>
+    </Page>
+</mvc:View>

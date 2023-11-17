@@ -1,80 +1,71 @@
-
-let aux=10
 sap.ui.define([
-    "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast",
-    "sap/m/MessageBox",
-    "sap/ui/model/json/JSONModel"
+
+  "./BaseController",  
+  'sap/m/MessageToast'
 ],
-    /**
-     * @param {typeof sap.ui.core.mvc.Controller} Controller
-     */
+  /**
+   * @param {typeof sap.ui.core.mvc.Controller} Controller
+   */
+  function (BaseController,MessageToast) {
+    "use strict";
 
-    function (Controller,MessageToast,MessageBox,JSONModel) {
-        "use strict";
+    return BaseController.extend("ns.nike.controller.Main", {
+      onInit: function () {
 
-        return Controller.extend("ns.project1.controller.Main", {
-            oModel: null,
+        var oModel = new sap.ui.model.json.JSONModel({
+          usuario: "",
+          contrasena: ""
+        })
+        this.getView().setModel(oModel);
+       
+      },//fin de la funcion
 
-            onInit: function () {  
-                this._setModels(); 
-                this._getProducts();
-               
-                 console.log("On init")
-            },
-
-            _setModels:function(){
-                
-                this.oModel = this.getOwnerComponent().getModel("northwind");
-                this.oModel.setUseBatch(false);
-                let productos=new JSONModel({
-                    products:[],
-                    isBusy:false
-                 });
-                 this.getView().setModel(productos,"NWProducts");
-            },
+      
 
 
 
 
-         _getProducts: function(){
-          let oProducts = this.getView().getModel("NWProducts");
-          let sPath= "/Products";
-          oProducts.setProperty("/isBusy",true)//esto se utiliza para saber si se encuentra ocupado
-          this.oModel.read(sPath, {
-          
-            success: function(OData){
-                console.log("entrando a getproducts")
-              
-                console.log(OData)
-                oProducts.setProperty("/products",OData.results)
-                oProducts.setProperty("/isBusy",false)
-            },
-            error: function(err){
-               
-                console.error( err)
-            }
-         
-          })
-            },
-            onBeforeRendering: function(){
-                console.log("Antes del renderizado")
-            },
-            onAfterRendering(){
-                console.log("onAfterRendering")
-            },
-            onExit: function(){
-                console.log("Exit")
-            },
-            handleEventPress:function(event){
-                MessageToast.show("Hola mundo")
-            },
-            handleEventBoxPress:function(event){
-                aux+=1
-                MessageBox.show("Hola box"+aux,{
-                    title:"mi primer box",
-                    icon:MessageBox.Icon.SUCCESS
-                })
-            }
-        });
+      ChangeScreen: function () {
+        this.getRouter().navTo('RouteLista');
+
+      },//fin de la funcion
+
+    
+
+      onLoginPress: function () {
+        // Obtener el modelo asociado a la vista
+        var oModel = this.getView().getModel();
+        var mensajeError=this.getView().byId("mensajeError");//declaramos el mensaje error que pondremos en true
+        var cBox = this.getView().byId("cBox").getSelected();//nos regresa el estado del checkbox
+        var msg=""
+       
+
+        // Obtener los valores de usuario y contraseña del modelo
+        var usuario = oModel.getProperty("/usuario");
+        var contrasena = oModel.getProperty("/contrasena");
+
+        if (usuario.localeCompare("mike") === 0 && contrasena.localeCompare("1234") === 0 && cBox) {
+          console.log("has entrado a la interfaz")
+          console.log("Usuario:", usuario);
+          console.log("Contraseña:", contrasena);
+          this.ChangeScreen()
+          this.__setUser(true,usuario);
+          console.log(this.__getUser());
+        }
+
+      else if(cBox ===false){
+         msg = 'Acepte los terminos y condiciones para continuar';
+        MessageToast.show(msg);
+      }  
+        else {
+          console.log("credenciales invalidas")
+           msg = 'Error, las credenciales introducidas son incorrectasy\r\n Corrijalas.';
+          MessageToast.show(msg);
+          mensajeError.setVisible(true)
+        }
+      }//fin de la funcion
+
+
+
     });
+  });

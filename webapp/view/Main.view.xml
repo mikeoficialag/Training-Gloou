@@ -1,19 +1,39 @@
 <mvc:View controllerName="ns.project1.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m"
-    xmlns:sf="sap.ui.comp.smartform"
-    >
-    <Page id="page" title="{i18n>title}">
-      <content> 
-      <!-- <VBox id="Vbox1">
-      <Button id="btn1"  text="show toast" icon="sap-icon://account" press="handleEventPress" type="Emphasized"/>
-      <Button id="btn2" text="show box" press="handleEventBoxPress" type="Accept"></Button>
-      </VBox>
-      <sf:SmartForm id="sf1"></sf:SmartForm> -->
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
 
-  <List id="lista1" items="{NWProducts>/products}">
-  <StandardListItem type="Active" busy="{NWProducts>/isBusy}" id="sli1" title="{NWProducts>ProductName}"/>
-  </List>
-       </content>
-    </Page>
+  <Page id="page" title="{i18n>title}">
+    <FlexBox id="_IDGenFlexBox1"
+     
+      displayInline="false"
+      class="login-container">
+      
+
+      <VBox id="bx1" >
+      <Button id="a6" icon="sap-icon://customer" />
+        <Label id="a1" text="Usuario"   />
+        <Input id="a2" value="{/usuario}" />
+
+        <Label id="a3" text="Contraseña" />
+        <Input id="a4" type="Password" value="{/contrasena}" />
+        <CheckBox id="cBox" text="Accept terms and conditions" selected="true"  />
+        <Button id="a5" text="Iniciar sesión" press="onLoginPress"  icon="sap-icon://visits"  />
+
+        <MessageStrip id="mensajeError"
+				text="Credenciales incorrectas:"
+				type="Error"
+				showIcon="true"
+				showCloseButton="true"
+				class="sapUiMediumMarginBottom"
+        visible="false"
+        
+        >
+			</MessageStrip>
+      </VBox>
+
+    </FlexBox>
+
+    <!-- <Button id="btn2" text="click" press="ver"></Button> -->
+    <content />
+  </Page>
 </mvc:View>

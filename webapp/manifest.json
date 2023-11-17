@@ -98,6 +98,13 @@
           "target": [
             "TargetMain"
           ]
+        },
+         {
+          "name":"RouteLista",
+          "pattern": "Result:?query",
+          "target":[
+            "TargetLista"
+          ]
         }
       ],
       "targets": {
@@ -108,7 +115,15 @@
           "viewId": "Main",
           "viewName": "Main"
         }
+      ,
+      "TargetLista": {
+        "viewType": "XML",
+        "transition": "slide",
+        "clearControlAggregation": false,
+        "viewId": "Lista",
+        "viewName": "Lista"
       }
+    }
     },
     "rootView": {
       "viewName": "ns.project1.view.App",
