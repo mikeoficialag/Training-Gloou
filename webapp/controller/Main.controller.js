@@ -44,7 +44,7 @@ sap.ui.define([
         var usuario = oModel.getProperty("/usuario");
         var contrasena = oModel.getProperty("/contrasena");
 
-        if (usuario.localeCompare("mike") === 0 && contrasena.localeCompare("1234") === 0 && cBox) {
+        if (usuario.localeCompare("") === 0 && contrasena.localeCompare("") === 0 && cBox) {
           console.log("has entrado a la interfaz")
           console.log("Usuario:", usuario);
           console.log("Contraseña:", contrasena);

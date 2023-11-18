@@ -2,14 +2,17 @@
 
 sap.ui.define([
     "./BaseController",
-    "sap/ui/model/json/JSONModel"
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/core/Fragment"    //libreria necesaria para poder usar el fragment
+
 ],
    
-    function (BaseController,JSONModel) {
+    function (BaseController,JSONModel,Fragment) {
         "use strict";
 
         return BaseController.extend("ns.project1.controller.Lista", {
             oModel: null,
+      
 
             onInit: function () {  
                 this.isUserActive()
@@ -58,6 +61,35 @@ sap.ui.define([
                 this.onInit();
                 },//end function
               
+
+
+             //FORMA CORRECTA DE MANDAR LLAMAR UN DIALOG
+		openDialog() {
+			// create dialog lazily
+			this.pDialog ??= this.loadFragment({
+				name: "ns.project1.view.fragments.MPDialog"
+			});
+
+			this.pDialog.then((oDialog) => oDialog.open());
+     
+            
+		},
+
+		onCancelDialog() {
+			// note: We don't need to chain to the pDialog promise, since this event handler
+			// is only called from within the loaded dialog itself.
+			this.byId("firstDialog").close();
+		},
+
+
+
+
+
+
+
+
+
+
 
 
 
