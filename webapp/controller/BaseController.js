@@ -1,8 +1,8 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-	"sap/ui/core/UIComponent",
-	"sap/ui/core/routing/History"
-], function(Controller, UIComponent, History) {
+	"sap/ui/core/UIComponent"
+
+], function(Controller, UIComponent) {
 	"use strict";
 
 	return Controller.extend("ns.project1.controller.BaseController", {

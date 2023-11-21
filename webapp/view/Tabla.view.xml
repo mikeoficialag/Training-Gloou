@@ -1,0 +1,9 @@
+<mvc:View controllerName="ns.project1.controller.Tabla" 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns="sap.m">
+  <Page id="page" title="{i18n>titleTable}">
+    <content>
+      <Button id="btn2" text="click" ></Button>
+    </content>
+  </Page>
+</mvc:View>

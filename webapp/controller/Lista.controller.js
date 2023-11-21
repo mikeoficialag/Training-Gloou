@@ -116,12 +116,20 @@ sap.ui.define([
           oComboBox.setValueState(ValueState.None);
           oAsnModel.setProperty('/isInspectorSelected', false);
         }
-      },
+      },//end function
 
 
 
+      onEnterToMaterialInspection:function(){
+      console.log("dentro del combobox")
+      let that = this;
 
-
+      // se navega a la pantalla inspección material y se cierra el diálogo
+      this.pDialog.then(function (oDialog) {
+        that.getRouter().navTo('RouteTabla');
+        oDialog.close();
+      });
+      },//end function
 
 
 

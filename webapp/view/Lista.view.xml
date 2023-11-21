@@ -16,9 +16,11 @@
   <l:VerticalLayout class="sapUiContentPadding" id="vl1">
     <Button id="btn1" icon="sap-icon://log" text="Log-out" press="onPressLogOut"/>
     <Button id="ope" icon="sap-icon://accidental-leave"
+    
 			text="{i18n>btnListDialog}"
 			press=".openDialog"
 			ariaHasPopup="Dialog" />
+      <Button id="btn2" text="ir a tabla" press="goTabla" />
     </l:VerticalLayout>
     </VBox>
   </FlexBox>

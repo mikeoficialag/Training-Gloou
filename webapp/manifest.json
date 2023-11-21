@@ -105,6 +105,13 @@
           "target":[
             "TargetLista"
           ]
+        },
+        {
+          "name":"RouteTabla",
+          "pattern": "route-tabla",
+          "target":[
+            "TargetTabla"
+          ]
         }
       ],
       "targets": {
@@ -113,7 +120,8 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "Main",
-          "viewName": "Main"
+          "viewName": "Main",
+          "viewLevel": 1
         }
       ,
       "TargetLista": {
@@ -121,7 +129,14 @@
         "transition": "slide",
         "clearControlAggregation": false,
         "viewId": "Lista",
-        "viewName": "Lista"
+        "viewName": "Lista",
+        "viewLevel": 2
+      },
+      "TargetTabla": {
+        "viewType": "XML",
+        "viewId": "Tabla",
+        "viewName": "Tabla",
+        "viewLevel": 3
       }
     }
     },
