@@ -44,7 +44,13 @@ sap.ui.define([
 			}
 			
 
-		}//end function
+		},//end function
+		setModel: function (oModel, sName) {
+			return this.getView().setModel(oModel, sName);
+		},//funcion parausar el combobox
+		getModel: function (sName) {
+			return this.getView().getModel(sName);
+		},//end function
 	
 
 

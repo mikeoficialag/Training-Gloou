@@ -13,6 +13,7 @@
 					items="{AsnModel>/Inspectores}"
 					width="100%"
 					placeholder="Doctor (required)" 
+					change="handleChangeInspector"
 					 >
 					<core:Item id="_IDGenItem1" key="{AsnModel>Id}" text="{AsnModel>Name}" />
 				</ComboBox>
