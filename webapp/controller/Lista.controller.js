@@ -24,10 +24,10 @@ sap.ui.define([
                 this.odModel = new JSONModel({
           Id: '180172220',
           Inspectores: [
-            { Id: 'Insp01', Name: 'Jose Jimenez' },
-            { Id: 'Insp02', Name: 'Jose Lopez' },
-            { Id: 'Insp03', Name: 'Juan Martin' },
-            { Id: 'Insp04', Name: 'Alfredo Hernandez' },
+            { Id: 'dc01', Name: 'Miguel Aguilar' },
+            { Id: 'dc02', Name: 'Edy Castro' },
+            { Id: 'dc03', Name: 'Ximena Garcia' },
+            { Id: 'dc04', Name: 'Juan Ramirez' },
           ],
           Materiales: null,
           IsInspectorSelected: false

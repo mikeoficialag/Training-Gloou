@@ -7,7 +7,7 @@
 		class="sapUiContentPadding">
 		<content>
 			<VBox id="_IDGenVBox1">
-				<Text id="_IDGenText1" text="Favor de insertar el codigo del doctor:" class="sapUiTinyMarginBottom" />
+				<Text id="_IDGenText1" text="Favor de seleccionar el nombre del doctor:" class="sapUiTinyMarginBottom" />
 				<ComboBox
 					id="searchFieldInspector"  
 					items="{AsnModel>/Inspectores}"

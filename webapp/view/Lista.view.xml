@@ -7,8 +7,7 @@
     <Page id="page" title="{i18n>title}">
       <content> 
 
- <Panel id="pan1"
-    headerText="{i18n>listaPTitle}">
+ <Panel id="pan1">
     
 <FlexBox id="fxl" justifyContent="End" >
  <VBox id="vb">
@@ -20,14 +19,13 @@
 			text="{i18n>btnListDialog}"
 			press=".openDialog"
 			ariaHasPopup="Dialog" />
-      <Button id="btn2" text="ir a tabla" press="goTabla" />
     </l:VerticalLayout>
     </VBox>
   </FlexBox>
   </Panel>
 
   <Panel id="panel2">
- <List id="lista1" items="{NWProducts>/products}">
+ <List id="lista1" headerText="{i18n>titleList}" items="{NWProducts>/products}">
   <StandardListItem type="Active" busy="{NWProducts>/isBusy}" id="sli1" title="{NWProducts>ProductName}"/>
   </List>
   </Panel>
