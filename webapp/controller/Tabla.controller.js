@@ -11,45 +11,63 @@ sap.ui.define([
       var oModel = new JSONModel({
         "DoctorsReport": [
           {
-            "Name": "Doctor 1",
-            "ProductId": "P001",
-            "SupplierName": "Hospital A",
-            "Width": 30,
-            "Depth": 20,
-            "Height": 180,
-            "DimUnit": "cm",
-            "WeightMeasure": 70,
-            "WeightUnit": "kg",
-            "Price": 100,
-            "CurrencyCode": "USD"
+            "Id":"01",
+            "Nombre": "Miguel Aguilar",
+            "Edad": "21",
+            "Especialidad": "Pediatra",
+            "Contrato": "TiempoCompleto",
+            "Sueldo": 60000,
+            "Moneda":"MXN"
+           
           },
           {
-            "Name": "Doctor 2",
-            "ProductId": "P002",
-            "SupplierName": "Clinic B",
-            "Width": 25,
-            "Depth": 18,
-            "Height": 175,
-            "DimUnit": "cm",
-            "WeightMeasure": 65,
-            "WeightUnit": "kg",
-            "Price": 90,
-            "CurrencyCode": "EUR"
+            "Id": "02",
+            "Nombre": "Ana García",
+            "Edad": "32",
+            "Especialidad": "Cardiólogo",
+            "Contrato": "MedioTiempo",
+            "Sueldo": 80000,
+            "Moneda": "USD"
           },
           {
-            "Name": "Doctor 3",
-            "ProductId": "P003",
-            "SupplierName": "Medical Center C",
-            "Width": 28,
-            "Depth": 22,
-            "Height": 185,
-            "DimUnit": "cm",
-            "WeightMeasure": 75,
-            "WeightUnit": "kg",
-            "Price": 110,
-            "CurrencyCode": "GBP"
+            "Id": "03",
+            "Nombre": "Carlos López",
+            "Edad": "45",
+            "Especialidad": "Dentista",
+            "Contrato": "TiempoCompleto",
+            "Sueldo": 75000,
+            "Moneda": "EUR"
           },
-          // Add more elements as needed
+          {
+            "Id": "04",
+            "Nombre": "Laura Martínez",
+            "Edad": "28",
+            "Especialidad": "Oftalmólogo",
+            "Contrato": "MedioTiempo",
+            "Sueldo": 70000,
+            "Moneda": "GBP"
+          },
+          {
+            "Id": "05",
+            "Nombre": "Javier Rodríguez",
+            "Edad": "40",
+            "Especialidad": "Cirujano",
+            "Contrato": "TiempoCompleto",
+            "Sueldo": 90000,
+            "Moneda": "JPY"
+          },
+          {
+            "Id": "06",
+            "Nombre": "Carmen Pérez",
+            "Edad": "38",
+            "Especialidad": "Ginecólogo",
+            "Contrato": "TiempoCompleto",
+            "Sueldo": 82000,
+            "Moneda": "AUD"
+          }
+         
+         
+          // Agregar as datos de ser necesario
         ]
       });
       this.getView().setModel(oModel);
