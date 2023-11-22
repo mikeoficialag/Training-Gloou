@@ -20,6 +20,9 @@ xmlns:mvc="sap.ui.core.mvc" height="100%">
 		</fiori:header>
 		<fiori:content>
 			<Toast id="demoToast" duration="1000"></Toast>
+			<!-- path:aqui va el nombre del json model
+	             path: 'Name' dentro del sorter es el atributo piloto ordenador		
+			-->
 			<Table
 				id="idProductsTable"
 				stickyColumnHeader="true"
@@ -27,11 +30,13 @@ xmlns:mvc="sap.ui.core.mvc" height="100%">
 				mode="SingleSelect"
 				selectionChange="handleSelectionChange"
 				rows="{
-					path: '/ProductCollection',
+					
+					path: '/DoctorsReport', 
 					sorter: {
-						path: 'Name'
+						path: 'SupplierName'
 					}
 				}">
+				
 				<columns>
 					<TableColumn id="_IDGenTableColumn1">
 						<Label id="_IDGenLabel1" text="Nombre" />
