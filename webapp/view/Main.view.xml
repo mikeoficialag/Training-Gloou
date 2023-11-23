@@ -1,6 +1,8 @@
 <mvc:View controllerName="ns.project1.controller.Main"
   xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m">
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout">
+  <!--  xmlns:l="sap.ui.layout"> es la libreria para los vertical layout-->
  <Page id="page" title="{i18n>title}">
     <FlexBox id="_IDGenFlexBox1"
       alignItems="Start"
@@ -9,15 +11,18 @@
        class="miFlexBoxConMargen"
      >
  <Panel id="bx1" >
+ <!--aqui use un verticalLayout para mejorar el diseño-->
+      <l:VerticalLayout id="VerticallLayout1" class="sapUiContentPadding">
       <Button id="a6" icon="sap-icon://customer" />
       <Label id="a1" text="Usuario"   />
       <Input id="a2" value="{/usuario}" />
 
       <Label id="a3" text="Contraseña" />
       <Input id="a4" type="Password" value="{/contrasena}" />
-      <CheckBox id="cBox" text="Accept terms and conditions" selected="true"  />
+      
+      <CheckBox id="cBox" text="Aceptar terminos y condiciones." selected="true"  />
       <Button id="a5" text="Iniciar sesión" press="onLoginPress"  icon="sap-icon://visits"  />
-
+      </l:VerticalLayout>
       <MessageStrip id="mensajeError"
 			text="Credenciales incorrectas:"
 			type="Error"

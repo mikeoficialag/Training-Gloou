@@ -3,21 +3,27 @@
 sap.ui.define([
     "./BaseController",
     "sap/ui/model/json/JSONModel",
-    "sap/ui/core/library"//para el uso del combobox
+    "sap/ui/core/library",//para el uso del combobox
      //libreria necesaria para poder usar el fragment
+     "sap/m/MessageBox"
 
 ],
    
-    function (BaseController,JSONModel,coreLibrary) {
+    function (BaseController,JSONModel,coreLibrary,MessageBox) {
         var ValueState = coreLibrary.ValueState;//esta variable es para el uso del combobox
         "use strict";
-
+      
+    
+        
         return BaseController.extend("ns.project1.controller.Lista", {
             oModel: null,
             odModel:null,
       
 
             onInit: function () {  
+              var oComboBox = null;
+
+
                 this.isUserActive()
                 this._setModels(); 
                 this._getProducts();
@@ -72,13 +78,28 @@ sap.ui.define([
          
           })
             }, //end function
-            onPressLogOut:function(){
-                this.__setUser(false,this.__getUser().nombre);
-                this.onInit();
-                },//end function
+          
               
-
-
+                onPressLogOut: function() {
+                  
+                  var that = this; //sirve para usar this con funciones anidadas
+                  MessageBox.confirm("¿Estás seguro de que quieres cerrar sesión?", {
+                      onClose: function(oAction) {
+                          if (oAction === MessageBox.Action.OK) {
+                              console.log("Usuario confirmó cerrar sesión");
+                              that.__setUser(false,that.__getUser().nombre);
+                              that.onInit();// Destruir manualmente la vista actual
+                              
+                              
+                              // Realiza la lógica para cerrar la sesión aquí
+                          } else {
+                              console.log("Usuario canceló cerrar sesión");
+                              // Realiza la lógica si el usuario cancela cerrar sesión
+                          }
+                      }
+                  });
+              },//end function
+              
              //FORMA CORRECTA DE MANDAR LLAMAR UN DIALOG
 		openDialog() {
 			// create dialog lazily
@@ -102,6 +123,7 @@ sap.ui.define([
         var oComboBox = oEvent.getSource(),
 				    sSelectedKey = oComboBox.getSelectedKey(),
 				    sValue = oComboBox.getValue();
+            
         
         var oAsnModel = this.getModel('AsnModel');
 
@@ -130,7 +152,8 @@ sap.ui.define([
         oDialog.close();
       });
       },//end function
-
+      
+    
 
 
 
@@ -144,24 +167,24 @@ sap.ui.define([
 
 
             //de qui para abajo son configuraciones fuera del Odata
-            onBeforeRendering: function(){
-                console.log("Antes del renderizado")
-            },
-            onAfterRendering(){
-                console.log("onAfterRendering")
-            },
-            onExit: function(){
-                console.log("Exit")
-            },
-            handleEventPress:function(event){
-                MessageToast.show("Hola mundo")
-            },
-            handleEventBoxPress:function(event){
-                aux+=1
-                MessageBox.show("Hola box"+aux,{
-                    title:"mi primer box",
-                    icon:MessageBox.Icon.SUCCESS
-                })
-            }
+            // onBeforeRendering: function(){
+            //     console.log("Antes del renderizado")
+            // },
+            // onAfterRendering(){
+            //     console.log("onAfterRendering")
+            // },
+            // onExit: function(){
+            //     console.log("Exit")
+            // },
+            // handleEventPress:function(event){
+            //     MessageToast.show("Hola mundo")
+            // },
+            // handleEventBoxPress:function(event){
+            //     aux+=1
+            //     MessageBox.show("Hola box"+aux,{
+            //         title:"mi primer box",
+            //         icon:MessageBox.Icon.SUCCESS
+            //     })
+            // }
         });
     });

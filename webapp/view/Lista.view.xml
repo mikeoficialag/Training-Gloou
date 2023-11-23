@@ -28,7 +28,7 @@
        <Button id="ope" icon="sap-icon://accidental-leave"
 			press=".openDialog"
 			ariaHasPopup="Dialog" />
-			<Button id="btn2" icon="sap-icon://log" text="" press="onPressLogOut"/>
+			<Button id="btn2" icon="sap-icon://log" text="" press="onPressLogOut" ariaHasPopup="Dialog"/>
 		<tnt:ToolHeaderUtilitySeparator id="_IDGenToolHeaderUtilitySeparator1"/>
       <!--aqui se pone la imagen del usuario-->
     <ToolbarSpacer id="_IDGenToolbarSpacer2" width="1.125rem"/>
