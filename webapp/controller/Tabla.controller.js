@@ -22,7 +22,7 @@ sap.ui.define([
           },
           {
             "Id": "02",
-            "Nombre": "Ana García",
+            "Nombre": "Liz García",
             "Edad": "32",
             "Especialidad": "Cardiólogo",
             "Contrato": "MedioTiempo",
@@ -78,7 +78,7 @@ sap.ui.define([
 
     handleRowClick: function(oEvent) {
       var demoToast = this.getView().byId("demoToast");
-      demoToast.setText("Event rowClick fired.");
+      demoToast.setText("Estas seleccionando un elemento de la tabla.");
       demoToast.show();
     },
     handleSelectionChange: function(oEvent) {

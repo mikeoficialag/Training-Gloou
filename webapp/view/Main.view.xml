@@ -1,37 +1,39 @@
 <mvc:View controllerName="ns.project1.controller.Main"
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m">
-
-  <Page id="page" title="{i18n>title}">
+ <Page id="page" title="{i18n>title}">
     <FlexBox id="_IDGenFlexBox1"
-     
+      alignItems="Start"
+      justifyContent="Center"
       displayInline="false"
-      class="login-container">
-      
-
-      <VBox id="bx1" >
+       class="miFlexBoxConMargen"
+     >
+ <Panel id="bx1" >
       <Button id="a6" icon="sap-icon://customer" />
-        <Label id="a1" text="Usuario"   />
-        <Input id="a2" value="{/usuario}" />
+      <Label id="a1" text="Usuario"   />
+      <Input id="a2" value="{/usuario}" />
 
-        <Label id="a3" text="Contraseña" />
-        <Input id="a4" type="Password" value="{/contrasena}" />
-        <CheckBox id="cBox" text="Accept terms and conditions" selected="true"  />
-        <Button id="a5" text="Iniciar sesión" press="onLoginPress"  icon="sap-icon://visits"  />
+      <Label id="a3" text="Contraseña" />
+      <Input id="a4" type="Password" value="{/contrasena}" />
+      <CheckBox id="cBox" text="Accept terms and conditions" selected="true"  />
+      <Button id="a5" text="Iniciar sesión" press="onLoginPress"  icon="sap-icon://visits"  />
 
-        <MessageStrip id="mensajeError"
-				text="Credenciales incorrectas:"
-				type="Error"
-				showIcon="true"
-				showCloseButton="true"
-				class="sapUiMediumMarginBottom"
-        visible="false"
-        
-        >
-			</MessageStrip>
-      </VBox>
+      <MessageStrip id="mensajeError"
+			text="Credenciales incorrectas:"
+			type="Error"
+			showIcon="true"
+			showCloseButton="true"
+			class="sapUiMediumMarginBottom"
+      visible="false"
+        />		
+</Panel>
 
     </FlexBox>
+
+
+
+
+
 
     <!-- <Button id="btn2" text="click" press="ver"></Button> -->
     <content />

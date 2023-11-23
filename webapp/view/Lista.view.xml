@@ -1,34 +1,68 @@
+    <!--Se consume la libreria sap.tnt renombrada tnt para el header-->
 <mvc:View controllerName="ns.project1.controller.Lista"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
-    xmlns:l="sap.ui.layout"
-    xmlns:sf="sap.ui.comp.smartform"
-    >
+    xmlns:tnt="sap.tnt"
+    >	
+    <!--inicio del toolbar header **********************************************************************-->
+
     <Page id="page" title="{i18n>title}">
-      <content> 
+    <ScrollContainer id="_IDGenScrollContainer1" vertical="true" height="100%">
+		<tnt:ToolHeader id="shellLikeToolHeader" class="sapUiTinyMargin">
 
- <Panel id="pan1">
-    
-<FlexBox id="fxl" justifyContent="End" >
- <VBox id="vb">
 
-  <l:VerticalLayout class="sapUiContentPadding" id="vl1">
-    <Button id="btn1" icon="sap-icon://log" text="Log-out" press="onPressLogOut"/>
-    <Button id="ope" icon="sap-icon://accidental-leave"
-    
-			text="{i18n>btnListDialog}"
+	  <!--Aqui se declara la imagen del sat junto con los titulos del header-->
+		<Image id="_IDGenImage1" src="test-resources/sap/tnt/images/SAP_Logo.png" decorative="true" press="onLogoPressed" tooltip="SAP Logo">
+		</Image>
+      <!--aqui va el titulo del header-->
+		<Title text="Control de inventario " wrapping="false" id="productName">
+				<layoutData>
+					<OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData3" priority="Disappear"/>
+				</layoutData>
+		</Title>
+      <!--aqui va el texto pequeño-->
+			<Text text="(oData-Lista)" wrapping="false" id="secondTitle"/>
+		<ToolbarSpacer id="_IDGenToolbarSpacer1" />
+    <!--aqui se definen los botones tanto con el OverFlowToolButton como con el button de toda la vida-->
+		<OverflowToolbarButton id="_IDGenOverflowToolbarButton3" icon="sap-icon://action-settings" type="Transparent" text="Settings"/>
+       <Button id="ope" icon="sap-icon://accidental-leave"
 			press=".openDialog"
 			ariaHasPopup="Dialog" />
-    </l:VerticalLayout>
-    </VBox>
-  </FlexBox>
-  </Panel>
+			<Button id="btn2" icon="sap-icon://log" text="" press="onPressLogOut"/>
+		<tnt:ToolHeaderUtilitySeparator id="_IDGenToolHeaderUtilitySeparator1"/>
+      <!--aqui se pone la imagen del usuario-->
+    <ToolbarSpacer id="_IDGenToolbarSpacer2" width="1.125rem"/>
+		<Avatar id="ImagenUsuario" src="https://i.pinimg.com/280x280_RS/de/65/2a/de652acdd7e4b7f9e014695f5737226a.jpg" displaySize="XS" press=".onAvatarPressed" tooltip="Profile">
+			<layoutData>
+					<OverflowToolbarLayoutData id="_IDGenOverflowToolbarLayoutData11" priority="NeverOverflow"/>
+			</layoutData>
+		</Avatar>
+	 </tnt:ToolHeader>
+    <!--fin del toolbar header **********************************************************************-->
+      <content> 
 
+<FlexBox
+    id="Flexbox1"
+    direction="Column"
+    alignItems="Start"
+    justifyContent="Start"
+    displayInline="false"
+>
   <Panel id="panel2">
- <List id="lista1" headerText="{i18n>titleList}" items="{NWProducts>/products}">
-  <StandardListItem type="Active" busy="{NWProducts>/isBusy}" id="sli1" title="{NWProducts>ProductName}"/>
-  </List>
+    <List id="lista1" headerText="{i18n>titleList}" items="{NWProducts>/products}">
+     <StandardListItem type="Active" busy="{NWProducts>/isBusy}" id="sli1" title="{NWProducts>ProductName}"/>
+    </List>
   </Panel>
-       </content>
-    </Page>
-</mvc:View>
+</FlexBox>
+
+
+
+
+
+
+      
+     </content>
+	    </ScrollContainer>
+        </Page>
+    
+           </mvc:View>

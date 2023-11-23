@@ -101,5 +101,6 @@ xmlns:mvc="sap.ui.core.mvc" height="100%">
 				</rows>
 			</Table>
 		</fiori:content>
+		
 	</fiori:Page>
 </mvc:View>
