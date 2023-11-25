@@ -14,33 +14,51 @@
  <!--aqui use un verticalLayout para mejorar el diseño-->
       <l:VerticalLayout id="VerticallLayout1" class="sapUiContentPadding">
       <Button id="a6" icon="sap-icon://customer" />
+   <!-- este es el mensaje de error en caso de que ingrese las contraseñas incorrectas -->
+			<MessageStrip
+        id="msgError"
+				text="Credenciales incorrectas. Favor de verificarlas"
+				type="Error"
+				showIcon="true"
+				showCloseButton="true"
+				class="sapUiMediumMarginBottom"
+        visible="false"
+        >
+			</MessageStrip>
+
       <Label id="a1" text="Usuario"   />
-      <Input id="a2" value="{/usuario}" />
+      <Input id="a2" value="{/usuario}" liveChange="onChangeInput" />
 
       <Label id="a3" text="Contraseña" />
-      <Input id="a4" type="Password" value="{/contrasena}" />
+      <Input id="a4" type="Password" value="{/contrasena}" liveChange="onChangeInput" />
       
       <CheckBox id="cBox" text="Aceptar terminos y condiciones." selected="true"  />
+<!--     
+    en la propiedad valueState podemos cambiar el formato de nuestros RadioButton
+    https://sapui5.hana.ondemand.com/#/entity/sap.ui.webc.main.CheckBox/sample/sap.ui.webc.main.sample.CheckBoxStates
+    en el link anterior puedo checar todos los estados -->
+     <Label id="lbl2" labelFor="rbg4" text="Selecciona el modulo al que deseas entrar." />
+	       <RadioButtonGroup id="rbg4"  select="onRBSelected" selectedIndex="-1">
+			        <RadioButton id="rbInfoDoctores" text="Info Doctores" />
+			        <RadioButton id="rbRecomendaciones" text="Recomendaciones" />
+		    </RadioButtonGroup>
       <Button id="a5" text="Iniciar sesión" press="onLoginPress"  icon="sap-icon://visits"  />
       </l:VerticalLayout>
-      <MessageStrip id="mensajeError"
-			text="Credenciales incorrectas:"
-			type="Error"
-			showIcon="true"
-			showCloseButton="true"
-			class="sapUiMediumMarginBottom"
-      visible="false"
-        />		
+     
 </Panel>
 
     </FlexBox>
 
+    <!-- me voy a llevar el elemento de abajo y otr mas a una nueva vista
+    solo usando sap.m -->
+
+          
 
 
 
 
 
-    <!-- <Button id="btn2" text="click" press="ver"></Button> -->
     <content />
+    	
   </Page>
 </mvc:View>

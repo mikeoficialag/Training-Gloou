@@ -1,7 +1,10 @@
 <mvc:View xmlns:m="sap.m" 
 controllerName="ns.project1.controller.Tabla" 
-xmlns="sap.ui.webc.main" xmlns:fiori="sap.ui.webc.fiori" 
-xmlns:mvc="sap.ui.core.mvc" height="100%">
+xmlns="sap.ui.webc.main"
+ xmlns:fiori="sap.ui.webc.fiori" 
+xmlns:mvc="sap.ui.core.mvc"
+xmlns:uxap="sap.uxap" 
+height="100%">
 <m:Panel id="panel1" >
  <m:Button 
                     id="btnRegresar_01" 
@@ -34,9 +37,9 @@ xmlns:mvc="sap.ui.core.mvc" height="100%">
 				selectionChange="handleSelectionChange"
 				rows="{
 					
-					path: '/DoctorsReport', 
+					path: 'DoctorsReport>/DoctorsReport', 
 					sorter: {
-						path: 'SupplierName'
+						path: 'Nombre'
 					}
 				}">
 				<!--en toda la parte de las colums van las columnas y los textos
@@ -68,32 +71,32 @@ xmlns:mvc="sap.ui.core.mvc" height="100%">
 						<cells>
 						<TableCell id="_IDGenTableCell6">
 								<content>
-									<Label id="_IDGenLabeid" text="{Id}"/>
+									<Label id="_IDGenLabeid" text="{DoctorsReport>Id}"/>
 								</content>
 							</TableCell>
 							<TableCell id="_IDGenTableCell1">
 								<content>
-									<Label id="_IDGenLabel6" text="{Nombre}"/>
+									<Label id="_IDGenLabel6" text="{DoctorsReport>Nombre}"/>
 								</content>
 							</TableCell>
 							<TableCell id="_IDGenTableCell2">
 								<content>
-									<Label id="_IDGenLabel7" text="{Edad}" />
+									<Label id="_IDGenLabel7" text="{DoctorsReport>Edad}" />
 								</content>
 							</TableCell>
 							<TableCell id="_IDGenTableCell3">
 								<content>
-									<Label id="_IDGenLabel8" text="{Especialidad}" />
+									<Label id="_IDGenLabel8" text="{DoctorsReport>Especialidad}" />
 								</content>
 							</TableCell>
 							<TableCell id="_IDGenTableCell4">
 								<content>
-									<Label id="_IDGenLabel9" text="{Contrato}" />
+									<Label id="_IDGenLabel9" text="{DoctorsReport>Contrato}" />
 								</content>
 							</TableCell>
 							<TableCell id="_IDGenTableCell5">
 								<content>
-									<Label id="_IDGenLabel10" text="{Sueldo}" />
+									<Label id="_IDGenLabel10" text="{DoctorsReport>Sueldo}" />
 								</content>
 							</TableCell>
 						</cells>

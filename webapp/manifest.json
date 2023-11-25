@@ -112,6 +112,13 @@
           "target":[
             "TargetTabla"
           ]
+        },
+        {
+          "name":"RouteMRecomendaciones",
+          "pattern": "route-MRecomendaciones",
+          "target":[
+            "TargetMRecomendaciones"
+          ]
         }
       ],
       "targets": {
@@ -137,6 +144,12 @@
         "viewId": "Tabla",
         "viewName": "Tabla",
         "viewLevel": 3
+      },
+      "TargetMRecomendaciones": {
+        "viewType": "XML",
+        "viewId": "MRecomendaciones",
+        "viewName": "MRecomendaciones",
+        "viewLevel": 2
       }
     }
     },

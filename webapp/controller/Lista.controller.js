@@ -21,7 +21,7 @@ sap.ui.define([
       
 
             onInit: function () {  
-              var oComboBox = null;
+           
 
 
                 this.isUserActive()

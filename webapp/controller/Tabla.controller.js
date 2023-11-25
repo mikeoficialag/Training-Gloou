@@ -70,7 +70,7 @@ sap.ui.define([
           // Agregar as datos de ser necesario
         ]
       });
-      this.getView().setModel(oModel);
+      this.getView().setModel(oModel,'DoctorsReport');//se asigna el nombre despues del oModel
     },
     onNavBack: function() {
       this.getRouter().navTo('RouteLista');
