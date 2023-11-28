@@ -28,7 +28,19 @@
    
         <content>
 		<!-- quite el radio button de la tabla modificando la propiedad mode ya que cuenta con None MultiSelect y SingleSelect -->
-            <Table
+		<Panel id="Panel1" >
+		 <VBox id="vboxNoData" visible="false">
+          <IllustratedMessage
+            id="_IDGenIllustratedMessage1"
+            enableVerticalResponsiveness="true"
+            enableDefaultTitleAndDescription="false"
+            description="No hay coincidencias con el nombre del doctor. Verifiquelo!"
+            illustrationSize="Auto"
+            illustrationType="sapIllus-SearchEarth"
+          />
+        </VBox>
+		<VBox id="vboxTabla" >
+		<Table
                 id="idDoctorsTable"
   
                 mode="None"
@@ -72,6 +84,10 @@
                     </ColumnListItem>
                 </items>
             </Table>
+		</VBox>
+		
+		</Panel>
+            
         </content>
     </Page>
 </mvc:View>

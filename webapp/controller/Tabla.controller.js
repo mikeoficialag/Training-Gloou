@@ -89,18 +89,27 @@ sap.ui.define([
       demoToast.show();
     },//end function 
 
+
     onFilterDoctores:function(oEvent) {
+      var vboxNoData = this.getView().byId("vboxNoData");
+      var vboxTabla = this.getView().byId("vboxTabla");
 			// build filter array
 			const aFilter = [], sQuery = oEvent.getSource().getValue();
-	
+	  
 			if (sQuery) {
 				aFilter.push(new Filter("Nombre", FilterOperator.Contains, sQuery));
 			}
 
-			// filter binding
-			const oTable = this.getView().byId("idDoctorsTable");
-			const oBinding = oTable.getBinding("items");
-			oBinding.filter(aFilter);
+    const oTable = this.getView().byId("idDoctorsTable");
+    const oBinding = oTable.getBinding("items");
+    oBinding.filter(aFilter);
+    var bNoData = oBinding.iLength === 0;
+		console.log(bNoData);
+  
+     bNoData  ?  vboxNoData.setVisible(true) && vboxTabla.setVisible(false) :  vboxNoData.setVisible(false) && vboxTabla.setVisible(true);//if para poner mensaje de error y quitar la tabla
+
+
+   
 		}//end function
 
 
