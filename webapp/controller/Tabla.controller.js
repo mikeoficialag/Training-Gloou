@@ -1,8 +1,10 @@
 sap.ui.define([
   "./BaseController",
   "sap/ui/core/mvc/Controller",
-  "sap/ui/model/json/JSONModel"
-], function(BaseController, Controller, JSONModel) {
+  "sap/ui/model/json/JSONModel",
+  "sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator"
+], function(BaseController, Controller, JSONModel,Filter,FilterOperator) {
   "use strict";
 
   return BaseController.extend("ns.project1.controller.Tabla", {
@@ -85,6 +87,22 @@ sap.ui.define([
       var demoToast = this.getView().byId("demoToast");
       demoToast.setText("Event selectionChange fired.");
       demoToast.show();
-    }
+    },//end function 
+
+    onFilterDoctores:function(oEvent) {
+			// build filter array
+			const aFilter = [];
+			const sQuery = oEvent.getParameter("query");
+			if (sQuery) {
+				aFilter.push(new Filter("Nombre", FilterOperator.Contains, sQuery));
+			}
+
+			// filter binding
+			const oTable = this.getView().byId("idDoctorsTable");
+			const oBinding = oTable.getBinding("items");
+			oBinding.filter(aFilter);
+		}//end function
+
+    
   });
 }); 

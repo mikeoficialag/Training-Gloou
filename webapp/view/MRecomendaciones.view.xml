@@ -19,6 +19,7 @@
         </VBox>
       </FlexBox>
       <Panel id="_IDGenPanel1">
+   
         <VBox id="vboxBusqueda" >
           <IllustratedMessage
             id="_IDGenIllustratedMessage1"
