@@ -10,13 +10,12 @@
             type="Back"
             press="onNavBack"/>
     </Panel>
-
+<!-- liveChange para que funcione el filter en tiempo real -->
 <Toolbar id="_IDGenToolbar1">
             <Title id="_IDGenTitle1" text=""/>
             <ToolbarSpacer id="_IDGenToolbarSpacer1"/>
             <SearchField id="_IDGenSearchField1" 
                width="50%" 
-               search="onFilterDoctores"
 			   liveChange="onFilterDoctores"
 			   
 			   />

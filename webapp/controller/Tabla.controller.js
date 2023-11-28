@@ -91,8 +91,8 @@ sap.ui.define([
 
     onFilterDoctores:function(oEvent) {
 			// build filter array
-			const aFilter = [];
-			const sQuery = oEvent.getParameter("query");
+			const aFilter = [], sQuery = oEvent.getSource().getValue();
+	
 			if (sQuery) {
 				aFilter.push(new Filter("Nombre", FilterOperator.Contains, sQuery));
 			}
@@ -102,6 +102,7 @@ sap.ui.define([
 			const oBinding = oTable.getBinding("items");
 			oBinding.filter(aFilter);
 		}//end function
+
 
     
   });
