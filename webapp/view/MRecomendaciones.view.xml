@@ -2,7 +2,11 @@
   controllerName="ns.project1.controller.MRecomendaciones"
   xmlns="sap.m"
   xmlns:mvc="sap.ui.core.mvc"
-  xmlns:core="sap.ui.core">
+  xmlns:core="sap.ui.core"
+  xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+
+  >
   <Page id="_IDGenPage1" title="{i18n>title}">
     <content>
       <FlexBox id="_IDGenFlexBox1" justifyContent="Start">
@@ -18,6 +22,7 @@
           </ComboBox>
         </VBox>
       </FlexBox>
+      
       <Panel id="_IDGenPanel1">
    
         <VBox id="vboxBusqueda" >
@@ -30,12 +35,101 @@
             illustrationType="sapIllus-SearchEarth"
           />
         </VBox>
+
+     
+        <VBox id="vboxFormulario" class="sapUiSmallMargin" visible="false">
+		<f:Form id="FormToolbar"
+			editable="true"
+			ariaLabelledBy="Title1">
+			<f:toolbar>
+				<Toolbar id="TB1">
+					<Title id="Title1" text="Recomendaciones"/>
+					<ToolbarSpacer id="_IDGenToolbarSpacer1" />
+					
+				</Toolbar>
+			</f:toolbar>
+			<f:layout>
+				<f:ResponsiveGridLayout id="_IDGenResponsiveGridLayout1"
+					labelSpanXL="4"
+					labelSpanL="3"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="4"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer id="_IDGenFormContainer1" ariaLabelledBy="Title2">
+					<f:toolbar>
+						<Toolbar id="_IDGenToolbar1">
+							<Title id="Title2" text="Datos del hospital"/>
+							<ToolbarSpacer id="_IDGenToolbarSpacer2" />
+							<Button id="_IDGenButton3" icon="sap-icon://log" press="onPressLogOut"/>
+						</Toolbar>
+					</f:toolbar>
+					<f:formElements>
+						<f:FormElement id="_IDGenFormElement1" label="Doctor">
+							<f:fields>
+								<Text id="lblDoctorsName"></Text>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement id="_IDGenFormElement2" label="Calle">
+							<f:fields>
+								<Text id="lblDoctorsCalle"></Text>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement id="_IDGenFormElement3" label="CP/Ciudad">
+							<f:fields>
+								<Text id="lblDoctorsCP"></Text>
+								<Text id="lblDoctorsCiudad"></Text>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement id="_IDGenFormElement4" label="Hospital">
+							<Text id="lblDoctorsHospital"></Text>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer id="_IDGenFormContainer2" ariaLabelledBy="Title3">
+					<f:toolbar>
+						<Toolbar id="_IDGenToolbar2">
+							<Title id="Title3" text="Quejas o sugerencias"/>
+							<ToolbarSpacer id="_IDGenToolbarSpacer3" />
+							<Button id="_IDGenButton4" icon="sap-icon://sys-cancel-2" press="onPressClear"/>
+						</Toolbar>
+					</f:toolbar>
+					<f:formElements>
+						<f:FormElement id="_IDGenFormElement5" label="Caja de comentarios">
+							<f:fields>
+							<TextArea
+				id="comentaryBox"
+				placeholder="Escriba aqui su queja o sugerencia."
+			  maxLength="100"
+				change="handleChange"
+				showExceededText="true"
+				rows="4"
+				/>
+				
+            	</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</VBox>
       </Panel>
     </content>
-    <footer>
-      <OverflowToolbar id="_IDGenOverflowToolbar1">
-        <!-- Agrega los botones del footer según tus necesidades -->
-      </OverflowToolbar>
-    </footer>
+   	<footer>
+			<Toolbar id="_IDGenToolbar3">
+				<ToolbarSpacer id="_IDGenToolbarSpacer4"/>
+			<Button id="toolBarOut" icon="sap-icon://log" press="onPressLogOut"/>
+      	<Button id="toolBarSave" icon="sap-icon://save" press="onPressSave" visible="false"/>
+    	</Toolbar>
+		</footer>
   </Page>
 </mvc:View>
