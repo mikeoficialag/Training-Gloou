@@ -7,9 +7,11 @@ sap.ui.define([
 function (BaseController, JSONModel, coreLibrary,MessageBox) {
   var ValueState = coreLibrary.ValueState;//esta variable es para el uso del combobox
   "use strict";
+  var nameDoctor = '';
 
   return BaseController.extend("ns.project1.controller.MRecomendaciones", {
    oModel : null,
+   oRModel:null,
   
     onInit: function () {
       this.isUserActive()
@@ -30,6 +32,29 @@ function (BaseController, JSONModel, coreLibrary,MessageBox) {
 
       this.setModel(oModel, 'AsnModel');
       //get usuario
+
+      //nuevo modelo-----------------------------------------------
+      // Crear el modelo con la información de los doctores
+ oRModel = new JSONModel({
+  Doctores: [
+    {
+      title: 'Dr. Nombre1',
+      recommendation: 'Buena atención y conocimiento.',
+      recommender: 'Usuario1'
+    },
+    {
+      title: 'Dr. Nombre2',
+      recommendation: 'Excelente médico, siempre dispuesto a ayudar.',
+      recommender: 'Usuario2'
+    },
+    // ... otros doctores
+  ]
+});
+
+// Asignar el modelo a la vista
+this.setModel(oRModel, 'oRModel');
+
+//fin del omodel de doctores recomendados
       
      
      
@@ -94,6 +119,9 @@ function (BaseController, JSONModel, coreLibrary,MessageBox) {
         lblDoctorsCP.setText(InspectoresFilt[0].CP);
         lblDoctorsCiudad.setText(InspectoresFilt[0].Ciudad);
         lblDoctorsHospital.setText(InspectoresFilt[0].Hospital);
+        this.nameDoctor = sValue;//asignar eñl nombre del doc a una variable
+        console.log(this.nameDoctor)
+
       }
  
       //NOTA: se hace en la posicion 0  ya que el array de objetos solo tiene una posicion
@@ -133,7 +161,7 @@ function (BaseController, JSONModel, coreLibrary,MessageBox) {
    onPressSave: function(){
   
 
-    var comentaryBox = this.getView().byId('comentaryBox');
+    var comentaryBox = this.getView().byId('comentaryBox'),
     comentaryBoxValue = comentaryBox.getValue();
    
     if(comentaryBoxValue === ''){
@@ -141,10 +169,24 @@ function (BaseController, JSONModel, coreLibrary,MessageBox) {
       MessageBox.error('No deje vacia la caja de comentarios');
       comentaryBox.setValueState('Error');
     }
-    else{
+    else{//actualizar el oRModel de las recomendaciones
       console.log(this.__getUser().nombre +' Escribio... '+comentaryBoxValue);
       comentaryBox.setValueState('None');
       comentaryBox.setValue('');
+      //obtenemos el modelo existente
+      var oRModel = this.getModel('oRModel');
+      //obtenemos el array actual de los doctores
+      var aDoctores = oRModel.getProperty('/Doctores');
+       //agregamos un nuevo elemento al array
+       var newDoctor = {
+        title : this.nameDoctor,
+        recommendation: comentaryBoxValue,
+        recommender: this.__getUser().nombre
+       }
+       //agregamos el nuevo doctor al array
+       aDoctores.push(newDoctor);
+       //actualizamos el modelo con el array de los doctores
+       oRModel.setProperty('/Doctores',aDoctores);
     }
   
    },//end function

@@ -4,12 +4,23 @@
 	<Dialog id="firstDialog"
 		icon="sap-icon://incident"
 		title="lista de recomendaciones"
-		class="sapUiContentPadding">
+		class="sapUiContentPadding"
+        xmlns:smartList="sap.ui.comp.smartlist"
+		>
 		
         <content>
-        <VBox id="firstVbox">
-         <Label  id="lbl1" text="estas en el fragmento"></Label>
-        </VBox>
+
+         <Panel id="panel2">
+    <List id="lista1" headerText="Doctores World Hospital" items="{oRModel>/Doctores}">
+	
+     <StandardListItem type="Active" busy="false" id="sli1" title="{oRModel>title}" description="{oRModel>recommendation}"
+    info="{oRModel>recommender}" />
+
+	
+    </List>
+  </Panel>
+
+  
         </content>
 		
 	</Dialog>
