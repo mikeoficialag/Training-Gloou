@@ -10,6 +10,7 @@ function (BaseController, JSONModel, coreLibrary,MessageBox) {
 
   return BaseController.extend("ns.project1.controller.MRecomendaciones", {
    oModel : null,
+  
     onInit: function () {
       this.isUserActive()
      oModel = new JSONModel({
@@ -28,6 +29,11 @@ function (BaseController, JSONModel, coreLibrary,MessageBox) {
       });
 
       this.setModel(oModel, 'AsnModel');
+      //get usuario
+      
+     
+     
+
     },
 
     handleChangeInspector: function (oEvent) {
@@ -100,13 +106,18 @@ function (BaseController, JSONModel, coreLibrary,MessageBox) {
    },//end function
 
    onPressLogOut: function(){
+  
+   
     var that = this; //sirve para usar this con funciones anidadas
     MessageBox.confirm("¿Estás seguro de que quieres cerrar sesión?", {
         onClose: function(oAction) {
             if (oAction === MessageBox.Action.OK) {
                 console.log("Usuario confirmó cerrar sesión");
                 that.__setUser(false,that.__getUser().nombre);
+                var  btnUser = that.getView().byId('btnUser');  
+                btnUser.setText('');//quitar el usuario
                 that.onInit();// Destruir manualmente la vista actual
+
                 
                 
                 // Realiza la lógica para cerrar la sesión aquí
@@ -117,6 +128,52 @@ function (BaseController, JSONModel, coreLibrary,MessageBox) {
         }
     });
    },//end function
+
+
+   onPressSave: function(){
+  
+
+    var comentaryBox = this.getView().byId('comentaryBox');
+    comentaryBoxValue = comentaryBox.getValue();
+   
+    if(comentaryBoxValue === ''){
+      console.log('el comentaryBox esta vacio')
+      MessageBox.error('No deje vacia la caja de comentarios');
+      comentaryBox.setValueState('Error');
+    }
+    else{
+      console.log(this.__getUser().nombre +' Escribio... '+comentaryBoxValue);
+      comentaryBox.setValueState('None');
+      comentaryBox.setValue('');
+    }
+  
+   },//end function
+
+   textAreaChange(){
+    var comentaryBox = this.getView().byId('comentaryBox');
+    comentaryBox.setValueState('None');
+   },//end function
+
+   showUser:function(){
+    var  btnUser = this.getView().byId('btnUser');  
+    btnUser.setText(this.__getUser().nombre);
+   },//end function
+   openDialogView: function(){
+    
+			// create dialog lazily
+			this.pDialog ??= this.loadFragment({
+				name: "ns.project1.view.fragments.ViewList"
+			});
+
+			this.pDialog.then((oDialog) => oDialog.open());
+     
+            
+		
+   },//end function
+
+
+   
+
 
   });
 });
