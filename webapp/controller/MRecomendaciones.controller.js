@@ -2,9 +2,10 @@ sap.ui.define([
   "./BaseController",
   "sap/ui/model/json/JSONModel",
   "sap/ui/core/library",//realmente esta libreria es importante para el uso del combobox
-  "sap/m/MessageBox"
+  "sap/m/MessageBox",
+  "sap/ui/util/Storage",
 ],
-function (BaseController, JSONModel, coreLibrary,MessageBox) {
+function (BaseController, JSONModel, coreLibrary,MessageBox,Storage) {
   var ValueState = coreLibrary.ValueState;//esta variable es para el uso del combobox
   "use strict";
   var nameDoctor = '';
@@ -14,6 +15,7 @@ function (BaseController, JSONModel, coreLibrary,MessageBox) {
    oRModel:null,
   
     onInit: function () {
+
       this.isUserActive()
      oModel = new JSONModel({
         Id: '180172220',
@@ -37,22 +39,20 @@ function (BaseController, JSONModel, coreLibrary,MessageBox) {
       // Crear el modelo con la información de los doctores
  oRModel = new JSONModel({
   Doctores: [
-    {
-      title: 'Dr. Nombre1',
-      recommendation: 'Buena atención y conocimiento.',
-      recommender: 'Usuario1'
-    },
-    {
-      title: 'Dr. Nombre2',
-      recommendation: 'Excelente médico, siempre dispuesto a ayudar.',
-      recommender: 'Usuario2'
-    },
-    // ... otros doctores
+  
   ]
 });
 
 // Asignar el modelo a la vista
 this.setModel(oRModel, 'oRModel');
+//igualamos el omodel del storage session al mio 
+var storedDataString = sessionStorage.getItem('oRModel');
+var storedData = storedDataString ? JSON.parse(storedDataString) : { Doctores: [] };
+oRModel.setData(storedData);
+
+console.log('Contenido del modelo:', this.getModel('oRModel').getData());
+
+
 
 //fin del omodel de doctores recomendados
       
@@ -158,38 +158,47 @@ this.setModel(oRModel, 'oRModel');
    },//end function
 
 
-   onPressSave: function(){
-  
 
+   onPressSave: function () {
     var comentaryBox = this.getView().byId('comentaryBox'),
-    comentaryBoxValue = comentaryBox.getValue();
-   
-    if(comentaryBoxValue === ''){
-      console.log('el comentaryBox esta vacio')
-      MessageBox.error('No deje vacia la caja de comentarios');
-      comentaryBox.setValueState('Error');
+        comentaryBoxValue = comentaryBox.getValue();
+
+    if (comentaryBoxValue === '') {
+        console.log('el comentaryBox está vacío');
+        MessageBox.error('No deje vacía la caja de comentarios');
+        comentaryBox.setValueState('Error');
+    } else {
+        console.log(this.__getUser().nombre + ' Escribió... ' + comentaryBoxValue);
+        comentaryBox.setValueState('None');
+        comentaryBox.setValue('');
+
+        // Recuperar datos existentes del almacenamiento local (sessionStorage)
+        var storedDataString = sessionStorage.getItem('oRModel');
+        var storedData = storedDataString ? JSON.parse(storedDataString) : { Doctores: [] };
+
+        // Agregar nuevo elemento al array
+        var newDoctor = {
+            title: this.nameDoctor,
+            recommendation: comentaryBoxValue,
+            recommender: this.__getUser().nombre
+        };
+
+        // Agregar el nuevo doctor al array
+        storedData.Doctores.push(newDoctor);
+
+        // Almacenar el array actualizado en el almacenamiento local (sessionStorage)
+        sessionStorage.setItem('oRModel', JSON.stringify(storedData));
+
+        // Actualizar el modelo con el array de los doctores
+        var oRModel = this.getModel('oRModel');
+        oRModel.setProperty('/Doctores', storedData.Doctores);
     }
-    else{//actualizar el oRModel de las recomendaciones
-      console.log(this.__getUser().nombre +' Escribio... '+comentaryBoxValue);
-      comentaryBox.setValueState('None');
-      comentaryBox.setValue('');
-      //obtenemos el modelo existente
-      var oRModel = this.getModel('oRModel');
-      //obtenemos el array actual de los doctores
-      var aDoctores = oRModel.getProperty('/Doctores');
-       //agregamos un nuevo elemento al array
-       var newDoctor = {
-        title : this.nameDoctor,
-        recommendation: comentaryBoxValue,
-        recommender: this.__getUser().nombre
-       }
-       //agregamos el nuevo doctor al array
-       aDoctores.push(newDoctor);
-       //actualizamos el modelo con el array de los doctores
-       oRModel.setProperty('/Doctores',aDoctores);
-    }
-  
-   },//end function
+},
+
+
+
+
+
 
    textAreaChange(){
     var comentaryBox = this.getView().byId('comentaryBox');
